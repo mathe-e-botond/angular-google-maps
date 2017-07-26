@@ -5,6 +5,14 @@ import {MouseEvent} from '../map-types';
 import {GoogleMapsAPIWrapper} from '../services/google-maps-api-wrapper';
 import {FullscreenControlOptions, LatLng, LatLngLiteral, MapTypeControlOptions, PanControlOptions,
         RotateControlOptions, ScaleControlOptions, StreetViewControlOptions, ZoomControlOptions} from '../services/google-maps-types';
+type FullscreenControlOptionsAliasHack = FullscreenControlOptions;
+type MapTypeControlOptionsAliasHack = MapTypeControlOptions;
+type PanControlOptionsAliasHack = PanControlOptions;
+type RotateControlOptionsAliasHack = RotateControlOptions;
+type ScaleControlOptionsAliasHack = ScaleControlOptions;
+type StreetViewControlOptionsAliasHack = StreetViewControlOptions;
+type ZoomControlOptionsAliasHack = ZoomControlOptions;
+
 import {LatLngBounds, LatLngBoundsLiteral, MapTypeStyle} from '../services/google-maps-types';
 import {CircleManager} from '../services/managers/circle-manager';
 import {InfoWindowManager} from '../services/managers/info-window-manager';
@@ -149,7 +157,8 @@ export class AgmMap implements OnChanges, OnInit, OnDestroy {
   /**
    * Options for the Zoom control.
    */
-  @Input() zoomControlOptions: ZoomControlOptions;
+
+  @Input() zoomControlOptions: ZoomControlOptionsAliasHack;
 
   /**
    * Styles to apply to each of the default map types. Note that for Satellite/Hybrid and Terrain
@@ -174,7 +183,7 @@ export class AgmMap implements OnChanges, OnInit, OnDestroy {
   /**
    * Options for the Street View control.
    */
-  @Input() streetViewControlOptions: StreetViewControlOptions;
+  @Input() streetViewControlOptions: StreetViewControlOptionsAliasHack;
 
   /**
    * Sets the viewport to contain the given bounds.
@@ -189,7 +198,7 @@ export class AgmMap implements OnChanges, OnInit, OnDestroy {
   /**
    * Options for the scale control.
    */
-  @Input() scaleControlOptions: ScaleControlOptions;
+  @Input() scaleControlOptions: ScaleControlOptionsAliasHack;
 
   /**
    * The initial enabled/disabled state of the Map type control.
@@ -199,7 +208,7 @@ export class AgmMap implements OnChanges, OnInit, OnDestroy {
   /**
    * Options for the Map type control.
    */
-  @Input() mapTypeControlOptions: MapTypeControlOptions;
+  @Input() mapTypeControlOptions: MapTypeControlOptionsAliasHack;
 
   /**
    * The initial enabled/disabled state of the Pan control.
@@ -209,7 +218,7 @@ export class AgmMap implements OnChanges, OnInit, OnDestroy {
   /**
    * Options for the Pan control.
    */
-  @Input() panControlOptions: PanControlOptions;
+  @Input() panControlOptions: PanControlOptionsAliasHack;
 
   /**
    * The initial enabled/disabled state of the Rotate control.
@@ -219,7 +228,7 @@ export class AgmMap implements OnChanges, OnInit, OnDestroy {
   /**
    * Options for the Rotate control.
    */
-  @Input() rotateControlOptions: RotateControlOptions;
+  @Input() rotateControlOptions: RotateControlOptionsAliasHack;
 
   /**
    * The initial enabled/disabled state of the Fullscreen control.
@@ -229,7 +238,7 @@ export class AgmMap implements OnChanges, OnInit, OnDestroy {
   /**
    * Options for the Fullscreen control.
    */
-  @Input() fullscreenControlOptions: FullscreenControlOptions;
+  @Input() fullscreenControlOptions: FullscreenControlOptionsAliasHack;
 
   /**
    * The map mapTypeId. Defaults to 'roadmap'.
