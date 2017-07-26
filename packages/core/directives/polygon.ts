@@ -251,6 +251,10 @@ export class AgmPolygon implements OnDestroy, OnChanges, AfterContentInit {
       const os = this._polygonManager.createEventObservable(obj.name, this).subscribe(obj.handler);
       this._subscriptions.push(os);
     });
+    
+    const os = this._polygonManager.createEventObservable('mouseup', this).subscribe((ev: Promise<Array<any>>) => this.pathChanged.emit(this.getPolygonPath()));
+    this._subscriptions.push(os);
+    
   }
 
   private _updatePolygonOptions(changes: SimpleChanges): PolygonOptions {
@@ -268,6 +272,7 @@ export class AgmPolygon implements OnDestroy, OnChanges, AfterContentInit {
   /** @internal */
   ngOnDestroy() {
     this._polygonManager.deletePolygon(this);
+    this.pathChanged.emit(this.getPolygonPath());
     // unsubscribe all registered observable subscriptions
     this._subscriptions.forEach((s) => s.unsubscribe());
   }
