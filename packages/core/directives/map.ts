@@ -201,6 +201,12 @@ export class AgmMap implements OnChanges, OnInit, OnDestroy {
   @Input() scaleControlOptions: ScaleControlOptionsAliasHack;
 
   /**
+   * The initial tilt angle of the map in satelite view. Defaults to 45 degrees
+   */
+  @Input() tilt: number = 45;
+
+
+  /**
    * The initial enabled/disabled state of the Map type control.
    */
   @Input() mapTypeControl: boolean = false;
@@ -270,7 +276,7 @@ export class AgmMap implements OnChanges, OnInit, OnDestroy {
     'streetViewControlOptions', 'zoom', 'mapTypeControl', 'mapTypeControlOptions', 'minZoom',
     'maxZoom', 'panControl', 'panControlOptions', 'rotateControl', 'rotateControlOptions',
     'fullscreenControl', 'fullscreenControlOptions', 'scaleControl', 'scaleControlOptions',
-    'mapTypeId', 'clickableIcons', 'gestureHandling'
+    'tilt', 'mapTypeId', 'clickableIcons', 'gestureHandling'
   ];
 
   private _observableSubscriptions: Subscription[] = [];
@@ -349,6 +355,7 @@ export class AgmMap implements OnChanges, OnInit, OnDestroy {
       streetViewControlOptions: this.streetViewControlOptions,
       scaleControl: this.scaleControl,
       scaleControlOptions: this.scaleControlOptions,
+      tilt: this.tilt,
       mapTypeControl: this.mapTypeControl,
       mapTypeControlOptions: this.mapTypeControlOptions,
       panControl: this.panControl,

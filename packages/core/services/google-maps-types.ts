@@ -141,6 +141,7 @@ export interface MapOptions {
   streetViewControlOptions?: StreetViewControlOptions;
   scaleControl?: boolean;
   scaleControlOptions?: ScaleControlOptions;
+  tilt?: number;
   mapTypeControl?: boolean;
   mapTypeControlOptions?: MapTypeControlOptions;
   panControl?: boolean;
